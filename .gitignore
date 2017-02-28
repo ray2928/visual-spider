@@ -1,0 +1,15 @@
+target/
+*.class
+*.project
+*.classpath
+*.iml
+.idea/
+*.log
+out/
+web-app/node_modules/
+temp/
+.gradle/
+build/
+classes/
+.slcache/
+*.DS_Store
