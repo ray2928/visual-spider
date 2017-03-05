@@ -6,12 +6,11 @@ import { Router, Route, Redirect } from 'react-router';
 // import WordCloudChart from './components/WordCloudChart';
 // import App from './App';
 import App from './components/test';
+import ChartAPIComponent from './components/charts/ChartAPIComponent';
 
-// /Users/ruixie/myprojects/visual-spider/react/scripts/components
 var router = (
     <Router>
-        <Route path="/" component={App}>
-
+        <Route path="/" component={ChartAPIComponent}>
         </Route>
     </Router>
 );
