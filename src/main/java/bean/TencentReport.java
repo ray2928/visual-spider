@@ -1,14 +1,29 @@
 package bean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TencentReport {
-    private String key;
+    private String company;
+    private Map<String, Integer> Languages;
 
-
-    public String getKey() {
-        return key;
+    public TencentReport() {
+        setLanguages();
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public Map<String, Integer> getLanguages() {
+        return Languages;
+    }
+
+    public void setLanguages() {
+        Languages = new HashMap<>();
     }
 }
