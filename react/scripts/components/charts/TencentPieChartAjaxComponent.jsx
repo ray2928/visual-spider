@@ -32,10 +32,10 @@ const TencentChartAPIAjaxComponent = React.createClass({
         this.setState({option: option});
     },
     componentDidMount: function () {
-        this.fetchNewData()
+        // this.fetchNewData()
     },
     componentWillUnmount: function() {
-        this.fetchNewData()
+        // this.fetchNewData()
     },
     getOption: function () {
         const option = {
@@ -48,14 +48,52 @@ const TencentChartAPIAjaxComponent = React.createClass({
                 data: ['类别']
             },
             xAxis: {
-                data: []
+                data: (function() {
+                    var names = [];
+                    $.ajax({
+                        url: 'http://127.0.0.1:8080/key/getReport',
+                        dataType: 'json',
+                        async: false,
+                        success: function (result) {
+                            if (result) {
+                                for (var i = 0; i < result["languages"].length; i++) {
+                                    names.push(result["languages"][i]["name"]);
+                                }
+                            }
+                            console.log("渲染完毕...")
+                        },
+                        error: function (errorMsg) {
+                            alert("图表请求数据失败!");
+                        }
+                    });
+                    return names;
+                })()
             },
             yAxis: {},
             series: [
                 {
                     name: '类别',
                     type: 'bar',
-                    data: []
+                    data: (function() {
+                        var percentages = [];
+                        $.ajax({
+                            url: 'http://127.0.0.1:8080/key/getReport',
+                            dataType: 'json',
+                            async: false,
+                            success: function (result) {
+                                if (result) {
+                                    for (var i = 0; i < result["languages"].length; i++) {
+                                        percentages.push(result["languages"][i]["percentage"]);
+                                    }
+                                }
+                                console.log("渲染完毕...")
+                            },
+                            error: function (errorMsg) {
+                                alert("图表请求数据失败!");
+                            }
+                        });
+                        return percentages;
+                    })()
                 }
             ]
         };
