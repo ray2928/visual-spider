@@ -1,11 +1,10 @@
 import React from 'react';
 import { Router, Route, Redirect } from 'react-router';
 
-import TencnetChartAPICompoent from './components/charts/TencentPieChartComponent';
-
+import TencentChartAPIAjaxComponent from './components/charts/TencentPieChartAjaxComponent';
 var router = (
     <Router>
-        <Route path="/" component={TencnetChartAPICompoent}>
+        <Route path="/" component={TencentChartAPIAjaxComponent}>
         </Route>
     </Router>
 );

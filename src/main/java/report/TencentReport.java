@@ -1,11 +1,13 @@
-package bean;
+package report;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TencentReport {
     private String company;
-    private Map<String, Integer> Languages;
+    private List Languages;
 
     public TencentReport() {
         setLanguages();
@@ -19,11 +21,11 @@ public class TencentReport {
         this.company = company;
     }
 
-    public Map<String, Integer> getLanguages() {
+    public List getLanguages() {
         return Languages;
     }
 
     public void setLanguages() {
-        Languages = new HashMap<>();
+        Languages = new ArrayList<Language>();
     }
 }

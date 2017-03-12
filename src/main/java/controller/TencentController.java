@@ -1,6 +1,7 @@
 package controller;
 
-import bean.TencentReport;
+import report.Language;
+import report.TencentReport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +19,10 @@ public class TencentController {
         TencentReport report = new TencentReport();
         report.setCompany("Tencent");
         report.setLanguages();
-        report.getLanguages().put("Java", 80);
-        report.getLanguages().put("C++", 10);
-        report.getLanguages().put("Swift", 5);
-        report.getLanguages().put("Groovy", 5);
+        report.getLanguages().add(new Language("Java", 80));
+        report.getLanguages().add(new Language("Groovy", 10));
+        report.getLanguages().add(new Language("C++", 5));
+        report.getLanguages().add(new Language("Swift", 5));
         return report;
     }
 }
