@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
+// import ReactEcharts from 'echarts-for-react';
+var echarts = require('echarts/lib/echarts') //必须
+require('echarts/lib/chart/pie') //图表类型
+require('echarts/lib/component/title') //标题插件
+
 import $ from 'jquery';
 
-
 export class PieReact extends React.Component {
+
     constructor(props) {
         super(props)
         this.setPieOption = this.setPieOption.bind(this)
         this.initPie = this.initPie.bind(this)
-
     }
 
     initPie() {
-        const { data } = this.props //外部传入的data数据
-        let myChart = echarts.init(this.refs.pieChart) //初始化echarts
-
+        const data = [
+            {value: 1, name: "是"},
+            {value: 2, name: "否"}
+        ]  //外部传入的data数据
+        let myChart = echarts.init(this.refs.pieReact) //初始化echarts
         //我们要定义一个setPieOption函数将data传入option里面
         let options = this.setPieOption(data)
         //设置options
@@ -27,6 +32,14 @@ export class PieReact extends React.Component {
 
     componentDidUpdate() {
         this.initPie()
+    }
+
+    render() {
+        return (
+            <div className="pie-react">
+                <div ref="pieReact" style={{width: "100%", height: "200px"}}></div>
+            </div>
+        )
     }
 
     //一个基本的echarts图表配置函数
@@ -63,13 +76,5 @@ export class PieReact extends React.Component {
                 }
             ]
         }
-    }
-
-    render() {
-        return (
-            <div className="pie-react">
-                <div ref="pieReact" style={{width: "100%", height: "200px"}}></div>
-            </div>
-        )
     }
 }
