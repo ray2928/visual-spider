@@ -2,6 +2,8 @@ import React from 'react';
 import Photo from './Photo';
 // import comments
 import Comments from './Comments';
+import Chart from './Chart';
+
 const Single = React.createClass({
         render() {
             const {postId} = this.props.params;
@@ -14,6 +16,7 @@ const Single = React.createClass({
                 <div className="single-photo">
                     <Photo i={i} post={post} {...this.props}/>
                     <Comments postComments = {postComments} {...this.props}/>
+                    <Chart />,
                 </div>
             )
         }
